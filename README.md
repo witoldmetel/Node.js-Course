@@ -120,7 +120,7 @@ if (fs.existsSync('relative/path/to/file')) {
 
 ## Streams and Buffers
 
-![Streams](Images\streams.png)
+![Streams](/Images/streams.png)
 
 Read stream
 
