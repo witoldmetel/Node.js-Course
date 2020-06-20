@@ -1,3 +1,11 @@
+# Node introduction
+
+![Streams](/Images/screen1.png)
+![Streams](/Images/screen2.png)
+![Streams](/Images/screen3.png)
+![Streams](/Images/screen4.png)
+![Streams](/Images/screen5.png)
+
 # Node basics
 
 ## Global Object
@@ -120,7 +128,7 @@ if (fs.existsSync('relative/path/to/file')) {
 
 ## Streams and Buffers
 
-![Streams](/Images/streams.png)
+![Streams](/Images/screen6.png)
 
 Read stream
 
