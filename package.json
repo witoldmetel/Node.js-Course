@@ -1,0 +1,15 @@
+{
+	"name": "node.js-course",
+	"version": "1.0.0",
+	"description": "Node.js Course",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js"
+	},
+	"author": "wmete",
+	"license": "ISC",
+	"dependencies": {
+		"lodash": "^4.17.15"
+	}
+}
