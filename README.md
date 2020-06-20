@@ -1,10 +1,10 @@
 # Node introduction
 
-![Streams](/Images/screen1.png)
-![Streams](/Images/screen2.png)
-![Streams](/Images/screen3.png)
-![Streams](/Images/screen4.png)
-![Streams](/Images/screen5.png)
+![Screen](/Images/screen1.png)
+![Screen](/Images/screen2.png)
+![Screen](/Images/screen3.png)
+![Screen](/Images/screen4.png)
+![Screen](/Images/screen5.png)
 
 # Node basics
 
@@ -128,7 +128,7 @@ if (fs.existsSync('relative/path/to/file')) {
 
 ## Streams and Buffers
 
-![Streams](/Images/screen6.png)
+![Screen](/Images/screen6.png)
 
 Read stream
 
@@ -172,3 +172,25 @@ const writeStream = fs.createWritetream('relative/path/to/stream');
 
 readStream.pipe(writeStream)
 ```
+
+# Clients & Servers
+
+![Screen](/Images/screen7.png)
+
+Create local server on Node.js
+
+```
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  console.log('request made')
+});
+
+server.listen(3000, 'localhost', () => {
+  console.log('listening for requests on port 3000')
+})
+```
+
+![Screen](/Images/screen8.png)
+
+Port number is like 'doors' into a computer
