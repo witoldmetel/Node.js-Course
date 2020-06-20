@@ -194,3 +194,179 @@ server.listen(3000, 'localhost', () => {
 ![Screen](/Images/screen8.png)
 
 Port number is like 'doors' into a computer
+
+# Requests & Responses
+
+```
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  console.log(req.url, req.method);
+
+  // set header content type
+  res.setHeader('Content-Type', 'text/html);
+
+  res.write('<p>hello world</p>');
+  res.end();
+});
+
+server.listen(3000, 'localhost', () => {
+  console.log('listening for requests on port 3000')
+})
+```
+
+Return HTML file
+
+```
+const http = require('http');
+const fs = require('fs);
+
+const server = http.createServer((req, res) => {
+  res.setHeader('Content-Type', 'text/html);
+
+  // send an html file
+  fs.readFile('path-to-html-file', (err, data) => {
+    if (err) {
+      console.log(err);
+      res.end();
+    } else {
+      // use `res.write(data);` when you need send multiple things
+      res.end(data);
+    }
+  })
+});
+
+server.listen(3000, 'localhost', () => {
+  console.log('listening for requests on port 3000')
+})
+```
+
+Basic Routing
+
+```
+const http = require('http');
+const fs = require('fs);
+
+const server = http.createServer((req, res) => {
+  res.setHeader('Content-Type', 'text/html);
+
+  // Routing
+  let path = 'path-to-html-files';
+
+  switch(req.url) {
+    case '/':
+      path += 'index.html';
+      break;
+    case '/about':
+      path += 'about.html';
+      break;
+    default:
+      path += '404.html';
+      break;
+  }
+
+  fs.readFile(path, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.end();
+    } else {
+      res.end(data);
+    }
+  })
+});
+
+server.listen(3000, 'localhost', () => {
+  console.log('listening for requests on port 3000')
+})
+```
+
+Status Codes
+
+![Screen](/Images/screen9.png)
+![Screen](/Images/screen10.png)
+
+```
+const http = require('http');
+const fs = require('fs);
+
+const server = http.createServer((req, res) => {
+  res.setHeader('Content-Type', 'text/html);
+
+  let path = 'path-to-html-files';
+
+  switch(req.url) {
+    case '/':
+      path += 'index.html';
+      res.statusCode = 200;
+      break;
+    case '/about':
+      path += 'about.html';
+      res.statusCode = 200;
+      break;
+    default:
+      path += '404.html';
+      res.statusCode = 404;
+      break;
+  }
+
+  fs.readFile(path, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.end();
+    } else {
+      res.end(data);
+    }
+  })
+});
+
+server.listen(3000, 'localhost', () => {
+  console.log('listening for requests on port 3000')
+})
+```
+
+Redirects
+
+```
+const http = require('http');
+const fs = require('fs);
+
+const server = http.createServer((req, res) => {
+  res.setHeader('Content-Type', 'text/html);
+
+  let path = 'path-to-html-files';
+
+  switch(req.url) {
+    case '/':
+      path += 'index.html';
+      res.statusCode = 200;
+      break;
+    case '/about':
+      path += 'about.html';
+      res.statusCode = 200;
+      break;
+    // Redirect
+    case '/about-me':
+      res.statusCode = 301;
+      res.setHeader('Location', './about');
+      res.end();
+      break;
+    default:
+      path += '404.html';
+      res.statusCode = 404;
+      break;
+  }
+
+  fs.readFile(path, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.end();
+    } else {
+      res.end(data);
+    }
+  })
+});
+
+server.listen(3000, 'localhost', () => {
+  console.log('listening for requests on port 3000')
+})
+```
