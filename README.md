@@ -185,7 +185,7 @@ const writeStream = fs.createWritetream('relative/path/to/stream');
 readStream.pipe(writeStream)
 ```
 
-## Clients & Servers
+## Clients and Servers
 
 ![Screen](/Images/screen7.png)
 
@@ -207,7 +207,7 @@ server.listen(3000, 'localhost', () => {
 
 Port number is like 'doors' into a computer
 
-## Requests & Responses
+## Requests and Responses
 
 ```
 const http = require('http');
