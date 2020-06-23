@@ -448,3 +448,34 @@ Inside the `index.ejs` file you can refference to this variable as: <$= title>
 ![Screen](/Images/screen11.png)
 
 Partials are parts of template which can be re-use.
+
+# Middleware
+
+Code which runs (on the server) between getting a request and sending a response
+
+![Screen](/Images/screen12.png)
+![Screen](/Images/screen13.png)
+
+Middleware example
+
+```
+app.use((req, res, next) => {
+	console.log(req.hostname);
+	console.log(req.path);
+	console.log(req.method);
+	next(); // allow go to next middleware, without this - page don't know what should be next step
+});
+```
+
+3rd party middleware
+
+```
+app.use(morgan('dev'));
+```
+
+Static Files
+
+```
+// all files inside public folder will be available on browser i.e. css styles
+app.use(express.static('public'));
+```
