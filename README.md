@@ -405,3 +405,46 @@ app.use((req, res) => {
 	res.status(404).sendFile('./views/404.html', { root: __dirname });
 });
 ```
+
+# View Engines
+
+View engines allow to us, write HTML templates but also allow us to inject dynamic data and logic into them like variables, loops and then we can serve the resulting HTML page with that data to the browser
+
+```
+const express = require('express');
+
+// Express app
+const app = express();
+
+// Register view engine
+app.set('view engine', 'ejs');
+
+app.get('/', (req, res) => {
+  // Take index.ejs automatically from folder views
+	res.render('index');
+});
+```
+
+Passing data into views
+
+```
+// Dynamic code
+<% const name = 'test' %>
+
+// Output data
+<%= name %>
+```
+
+You can put any data directly to template
+
+```
+app.get('/', (req, res) => {
+	res.render('index', { title: 'Home' });
+});
+
+Inside the `index.ejs` file you can refference to this variable as: <$= title>
+```
+
+![Screen](/Images/screen11.png)
+
+Partials are parts of template which can be re-use.
