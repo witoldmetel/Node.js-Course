@@ -1,4 +1,16 @@
-# Node introduction
+# Node.js Course
+
+## Table of contents
+* [Node introduction](#node-introduction)
+* [Node Basics](#node-basics)
+* [Streams and Buffers](#streams-and-buffers)
+* [Clients & Servers](#clients-&-servers)
+* [Requests & Responses](#requests-&-responses)
+* [Express](#express)
+* [View Engines](#view-engines)
+* [Middleware](#middleware)
+
+## Node introduction
 
 ![Screen](/Images/screen1.png)
 ![Screen](/Images/screen2.png)
@@ -6,9 +18,9 @@
 ![Screen](/Images/screen4.png)
 ![Screen](/Images/screen5.png)
 
-# Node basics
+## Node Basics
 
-## Global Object
+Global Object
 
 Get absolute path of current folder that this file is in
 
@@ -22,7 +34,7 @@ Get absolute path of the folder with the file name added
 console.log(__filename);
 ```
 
-## Modules and Require
+Modules and Require
 
 Require another file automatically node looks for that file and run it
 
@@ -55,7 +67,7 @@ const os = require('os')
 console.log(os.platform(), os.homedir())
 ```
 
-## File system
+File system
 
 Import file system core module
 
@@ -173,7 +185,7 @@ const writeStream = fs.createWritetream('relative/path/to/stream');
 readStream.pipe(writeStream)
 ```
 
-# Clients & Servers
+## Clients & Servers
 
 ![Screen](/Images/screen7.png)
 
@@ -195,7 +207,7 @@ server.listen(3000, 'localhost', () => {
 
 Port number is like 'doors' into a computer
 
-# Requests & Responses
+## Requests & Responses
 
 ```
 const http = require('http');
@@ -373,7 +385,7 @@ server.listen(3000, 'localhost', () => {
 
 All these examples are in `vanilla_js_approach` folder
 
-# Express
+## Express
 
 ```
 const express = require('express');
@@ -406,7 +418,7 @@ app.use((req, res) => {
 });
 ```
 
-# View Engines
+## View Engines
 
 View engines allow to us, write HTML templates but also allow us to inject dynamic data and logic into them like variables, loops and then we can serve the resulting HTML page with that data to the browser
 
@@ -449,7 +461,7 @@ Inside the `index.ejs` file you can refference to this variable as: <$= title>
 
 Partials are parts of template which can be re-use.
 
-# Middleware
+## Middleware
 
 Code which runs (on the server) between getting a request and sending a response
 
