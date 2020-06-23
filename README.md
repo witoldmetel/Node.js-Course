@@ -370,3 +370,5 @@ server.listen(3000, 'localhost', () => {
   console.log('listening for requests on port 3000')
 })
 ```
+
+All these examples are in `vanilla_js_approach` folder
