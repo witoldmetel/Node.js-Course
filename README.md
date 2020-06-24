@@ -1,14 +1,16 @@
 # Node.js Course
 
 ## Table of contents
-* [Node introduction](#node-introduction)
-* [Node Basics](#node-basics)
-* [Streams and Buffers](#streams-and-buffers)
-* [Clients and Servers](#clients-and-servers)
-* [Requests and Responses](#requests-and-responses)
-* [Express](#express)
-* [View Engines](#view-engines)
-* [Middleware](#middleware)
+
+- [Node introduction](#node-introduction)
+- [Node Basics](#node-basics)
+- [Streams and Buffers](#streams-and-buffers)
+- [Clients and Servers](#clients-and-servers)
+- [Requests and Responses](#requests-and-responses)
+- [Express](#express)
+- [View Engines](#view-engines)
+- [Middleware](#middleware)
+- [Connect with MongoDB](#connect-with-mongoDB)
 
 ## Node introduction
 
@@ -490,4 +492,85 @@ Static Files
 ```
 // all files inside public folder will be available on browser i.e. css styles
 app.use(express.static('public'));
+```
+
+## Connect with MongoDB
+
+![Screen](/Images/screen14.png)
+![Screen](/Images/screen15.png)
+![Screen](/Images/screen16.png)
+![Screen](/Images/screen17.png)
+
+```
+// connect to MongoDB
+const dbURI =
+	'mongodb+srv://<user>:<password>@cluster0-pt2ri.mongodb.net/<database_name>?retryWrites=true&w=majority';
+
+mongoose
+	.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+	.then((result) => {
+		console.log('connected to db');
+	})
+	.catch((err) => console.log(err));
+
+```
+
+Prepare model and schema using Mongoose
+
+```
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const blogSchema = new Schema(
+	{
+		title: {
+			type: String,
+			required: true,
+		},
+		snippet: {
+			type: String,
+			required: true,
+		},
+		body: {
+			type: String,
+			required: true,
+		},
+	},
+	{ timestamps: true }
+);
+
+const Blog = mongoose.model('Blog', blogSchema);
+
+module.exports = Blog;
+```
+
+Save example data to database
+
+```
+app.get('/add-blog', (req, res) => {
+	const blog = new Blog({
+		title: 'new Blog',
+		snippet: 'about my new blog',
+		body: 'more about',
+	});
+
+	blog
+		.save()
+		.then((result) => {
+			res.send(result);
+		})
+		.catch((err) => console.log(err));
+});
+```
+
+Get data from database
+
+```
+app.get('/all-blogs', (req, res) => {
+	Blog.find()
+		.then((result) => {
+			res.send(result);
+		})
+		.catch((err) => console.log(err));
+});
 ```
