@@ -496,6 +496,12 @@ app.use(express.static('public'));
 
 ## Connect with MongoDB
 
+SQL vs NoSQL or MySQL vs MongoDB
+https://academind.com/learn/web-dev/sql-vs-nosql/
+
+MongoDB - Complete Introduction & Summary
+https://www.youtube.com/watch?v=VELru-FCWDM
+
 ![Screen](/Images/screen14.png)
 ![Screen](/Images/screen15.png)
 ![Screen](/Images/screen16.png)
