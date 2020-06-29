@@ -11,6 +11,7 @@
 - [View Engines](#view-engines)
 - [Middleware](#middleware)
 - [Connect with MongoDB](#connect-with-mongoDB)
+- [Get, Post and Delete Requests](#get-post-and-delete-requests)
 
 ## Node introduction
 
@@ -580,3 +581,75 @@ app.get('/all-blogs', (req, res) => {
 		.catch((err) => console.log(err));
 });
 ```
+
+## Get, Post and Delete Requests
+
+![Screen](/Images/screen18.png)
+
+Post request
+
+```
+// takes urlencoded data and pass it as the object
+app.use(express.urlencoded({ extended: true }));
+
+app.post('/blogs', (req, res) => {
+	const blog = new Blog(req.body);
+
+	blog
+		.save()
+		.then((result) => {
+			res.redirect('/blogs');
+		})
+		.catch((err) => console.log(err));
+});
+```
+
+Route Parameters
+
+![Screen](/Images/screen19.png)
+
+Get request
+
+```
+app.get('/blogs/:id', (req, res) => {
+	const id = req.param.id;
+
+	Blog.findById(id)
+		.then((result) => {
+			render('details', { blog: result, title: 'Blog Details' });
+		})
+		.catch((err) => console.log(err));
+});
+```
+
+Delete request
+
+```
+app.delete('/blogs/:id', (req, res) => {
+	const id = req.params.id;
+
+	Blog.findByIdAndDelete(id)
+		.then((result) => {
+			res.json({ redirect: '/blogs' });
+		})
+		.catch((err) => console.log(err));
+});
+
+// On the front-end side
+<script>
+  const trashcan = document.querySelector('a.delete');
+  trashcan.addEventListener('click', (e) => {
+    const endpoint = `/blogs/${trashcan.dataset.doc}`;
+
+    fetch(endpoint, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((data) => (window.location.href = data.redirect))
+      .catch((err) => console.log(err));
+  });
+</script>
+```
+
+More details here:
+https://youtu.be/VVGgacjzc2Y?t=1212
