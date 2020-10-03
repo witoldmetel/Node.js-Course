@@ -460,7 +460,7 @@ app.get('/', (req, res) => {
 Inside the `index.ejs` file you can refference to this variable as: <$= title>
 ```
 
-![Screen](/Images/screen11.png)
+![Screen](/Images/screen11.PNG)
 
 Partials are parts of template which can be re-use.
 
@@ -505,10 +505,10 @@ https://www.youtube.com/watch?v=VELru-FCWDM
 
 https://robomongo.org/
 
-![Screen](/Images/screen14.png)
-![Screen](/Images/screen15.png)
-![Screen](/Images/screen16.png)
-![Screen](/Images/screen17.png)
+![Screen](/Images/screen14.PNG)
+![Screen](/Images/screen15.PNG)
+![Screen](/Images/screen16.PNG)
+![Screen](/Images/screen17.PNG)
 
 ```
 // connect to MongoDB
